@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ContactMessage;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
@@ -12,20 +12,24 @@ class ContactController extends Controller
         return view('contact');
     }
 
-    public function sendMessage(Request $request)
+    public function send(Request $request)
     {
-        // Validasi form
+        // Validasi sederhana dulu
         $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required',
             'email' => 'required|email',
-            'subject' => 'required|max:255',
+            'subject' => 'required',
             'message' => 'required'
         ]);
 
-        // Simpan ke database
-        ContactMessage::create($request->all());
+        // Simpan manual tanpa mass assignment
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->save();
 
-        // Kasih success message
-        return back()->with('success', 'Pesan kamu berhasil dikirim! Aku akan balas secepatnya 💖');
+        return back()->with('success', 'Pesan berhasil dikirim!');
     }
 }
