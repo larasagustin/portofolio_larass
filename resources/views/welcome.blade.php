@@ -156,6 +156,7 @@
                             <a href="https://instagram.com/0lag8_" class="btn btn-outline-danger me-2">Instagram</a>
                             <a href="mailto:agstinin0128@gmail.com" class="btn btn-outline-primary me-2">Email</a>
                             <a href="https://github.com/larasagustin" class="btn btn-outline-dark">GitHub</a>
+                            <a href="/contact" class="btn btn-outline-primary me-2">📧 Contact Me</a>
                         </div>
                     </div>
                 </div>
